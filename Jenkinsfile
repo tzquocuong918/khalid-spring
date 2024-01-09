@@ -22,8 +22,8 @@ pipeline {
 
             steps {
                 withDockerRegistry(credentialsId: 'docker', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t quoccuong/springboot .'
-                    sh 'docker push quoccuong/springboot'
+                    sh 'docker build -t onlyyou1982000/springboot .'
+                    sh 'docker push onlyyou1982000/springboot'
                 }
             }
         }
@@ -46,8 +46,8 @@ pipeline {
         stage('Deploy Spring Boot to DEV') {
             steps {
                 echo 'Deploying and cleaning'
-                sh 'docker image pull quoccuong/springboot'
-                sh 'docker container stop quoccuong-springboot || echo "this container does not exist" '
+                sh 'docker image pull onlyyou1982000/springboot'
+                sh 'docker container stop onlyyou1982000-springboot || echo "this container does not exist" '
                 sh 'docker network create dev || echo "this network exists"'
                 sh 'echo y | docker container prune '
 
